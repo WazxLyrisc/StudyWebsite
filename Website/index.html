@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng kế hoạch</title>
+    <link href="https://fonts.googleapis.com/icon?family-Material+Icons">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <i class="bx bxl-c-plus-plus"></i>
+                <div class="logo_name">Website</div>
+            </div>
+            <i class="bx bx-menu" id="btn"></i>
+        </div>
+        <ul class="nav_list">
+            <li>
+                <i class="bx bx-search"></i>
+                <input type="text" placeholder="search">
+                <span class="tooltip">Tìm Kiếm</span>
+            </li>
+            <li>
+                <a href="./index.html">
+                    <i class='bx bx-clipboard'></i>
+                    <span class="links_name">Bảng kế hoạch</span>
+                </a>
+                <span class="tooltip">Bảng kế hoạch</span>
+            </li>
+            <!-- <li>
+                <a href="#">
+                    <i class="bx bx-user"></i>
+                    <span class="links_name">Người dùng</span>
+                </a>
+                <span class="tooltip">Người dùng</span>
+            </li> -->
+            <li>
+                <a href="./vertical.html">
+                    <i class='bx bxs-objects-vertical-bottom'></i>
+                    <span class="links_name">Thống kê giờ học</span>
+                </a>
+                <span class="tooltip">Thống kê giờ học</span>
+            </li>
+            <li>
+                <a href="./calendar.html">
+                    <i class='bx bxs-calendar'></i>
+                    <span class="links_name">Lịch</span>
+                </a>
+                <span class="tooltip">Lịch</span>
+            </li>
+            <!-- <li>
+                <a href="#">
+                    <i class='bx bxs-time'></i>
+                    <span class="links_name">Thời hạn</span>
+                </a>
+                <span class="tooltip">Thời hạn</span>
+            </li> -->
+            <!-- <li>
+                <a href="#">
+                    <i class="bx bx-cart-alt"></i>
+                    <span class="links_name">Shop</span>
+                </a>
+                <span class="tooltip">Shop</span>
+            </li> -->
+            <li>
+                <a href="#">
+                    <i class="bx bx-cog"></i>
+                    <span class="links_name">Cài đặt</span>
+                </a>
+                <span class="tooltip">Cài đặt</span>
+            </li>
+        </ul>
+        <div class="profile_content">
+            <div class="profile">
+                <div class="profile_details">
+                    <img src="War.jpg" alt="">
+                    <div class="name_job">
+                        <div class="name">HGS</div>
+                        <div class="job">Học sinh</div>
+                    </div>
+                </div>
+                <a href="./register.html"><i class="bx bx-log-out" id="log_out"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="home_content">
+        <div class="content">
+            <h3>Dự án / Dự án của bạn</h3>
+            <h1>Nhiệm vụ của bạn!</h1>
+        </div>
+
+        <div class="text">
+            <div class="to-do-list">
+
+                <div class="row">
+                    <h4>To-do</h4>
+                    <!-- <form>
+                        <input type="text" id="input-box" placeholder="Tilte...">
+                        <button onclick="addTask()">Add</button>
+                    </form> -->
+                    <button onclick="document.getElementById('id01').style.display='block'">Tạo kế hoạch</button>
+                    <div id="id01" class="modal">
+                        <form class="modal-content" action="#">
+                            <div class="container-1">
+                                <h2>Thêm nhiệm vụ học tập</h2>
+                                <h3>Tilte</h3>
+                                <input type="text" id="taskInput" placeholder="Nhập tên nhiệm vụ">
+                                <!-- <select id="difficulty">
+                                    <option value="easy">Dễ (có thể hoàn thành)</option>
+                                    <option value="medium"> Trung bình (cân nhắc)</option>
+                                    <option value="hard"> Khó (Khó hoàn thành)</option>
+                                </select> -->
+                                <h3>Content</h3>
+
+                                <textarea type="text" id="taskInput-2" row="6" cols="50" style="height:100px; width:50%; font-size:20px; text-align:center;" placeholder="Nhập nội dung"></textarea>
+
+                                <h3>Important</h3>
+                                <select id="important">
+                                    <option value="">1</option>
+                                    <option value="">2</option>
+                                    <option value="">3</option>
+                                    <option value="">4</option>
+                                </select>
+                                <h3>Urgent</h3>
+                                <select id="urgent">
+                                    <option value="">1</option>
+                                    <option value="">2</option>
+                                    <option value="">3</option>
+                                    <option value="">4</option>
+                                </select>
+                                <button onclick="addTask()" type="submit" class="signupbtn">Thêm</button>
+                            </div>
+                            <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                                title="Close Modal"><i class='bx bx-x-circle'></i></span>
+                            <div class="container-2">
+                                <div class="clearfix">
+                                    <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                                        class="cancelbtn">Từ chối</button>
+                                    <!-- <button type="submit" class="signupbtn">Tạo kế hoạch</button> -->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- <ul id="list-container">
+                    Có thể bỏ code ở dưới
+                    <li class="checked">kế hoạch 1</li>
+                    <li>kế hoạch 2</li>
+                    <li>kế hoạch 3</li>
+
+                </ul> -->
+
+            </div>
+
+            <!-- <div class="to-do-list">
+                <div class="row">
+                    <h4>Có thể hoàn thành</h4>
+                    <ul id="easyTasks"></ul>
+                </div>
+            </div>
+
+            <div class="to-do-list">
+                <div class="row">
+                    <h4>Trung bình</h4>
+                    <ul id="mediumTasks"></ul>
+                </div>
+            </div>
+
+            <div class="to-do-list">
+                <div class="row">
+                    <h4>Khó hoàn thành</h4>
+                    <ul id="hardTasks"></ul>
+                </div>
+            </div> -->
+        </div>
+
+        <!--Tạo Firebass cho to do để lưu trữ kế hoạch-->
+
+        <!-- <div class="footer">
+            <div class="container">
+                <div class="row-footer">
+                    <div class="footer-col">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#">Hello</a></li>
+                            <li><a href="#">Hello</a></li>
+                            <li><a href="#">Hello</a></li>
+                            <li><a href="#">Hello</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Let Help</h4>
+                        <ul>
+                            <li><a href="#">Su</a></li>
+                            <li><a href="#">Su</a></li>
+                            <li><a href="#">Su</a></li>
+                            <li><a href="#">Su</a></li>
+                            <li><a href="#">Su</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Info</h4>
+                        <ul>
+                            <li><a href="#">Uiia</a></li>
+                            <li><a href="#">Uiia</a></li>
+                            <li><a href="#">Uiia</a></li>
+                            <li><a href="#">Uiia</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Follow Us</h4>
+                        <div class="social-links">
+                            <a href="#"><i class='bx bxl-facebook-circle'></i></a>
+                            <a href="#"><i class='bx bxl-google'></i></a>
+                            <a href="#"><i class='bx bxl-youtube' ></i></a>
+                            <a href="#"><i class='bx bxl-github' ></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="chatbot">
+            <header>
+                <h2>ChatBot</h2>
+            </header>
+            <ul class="chatbox">
+                <li class="chat incoming">
+                    <span class="material-symbols-outlined">smart_toy</span>
+                    <p>Chào !<br>Mình có thể giúp gì cho bạn?</p>
+                </li>
+                <li class="chat outgoing">
+                    <p>Tạm Biệt</p>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- <div class="footer">
+        <div class="container">
+            <div class="row-footer">
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">Hello</a></li>
+                        <li><a href="#">Hello</a></li>
+                        <li><a href="#">Hello</a></li>
+                        <li><a href="#">Hello</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Let Help</h4>
+                    <ul>
+                        <li><a href="#">Su</a></li>
+                        <li><a href="#">Su</a></li>
+                        <li><a href="#">Su</a></li>
+                        <li><a href="#">Su</a></li>
+                        <li><a href="#">Su</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Info</h4>
+                    <ul>
+                        <li><a href="#">Uiia</a></li>
+                        <li><a href="#">Uiia</a></li>
+                        <li><a href="#">Uiia</a></li>
+                        <li><a href="#">Uiia</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class='bx bxl-facebook-circle'></i></a>
+                        <a href="#"><i class='bx bxl-google'></i></a>
+                        <a href="#"><i class='bx bxl-youtube' ></i></a>
+                        <a href="#"><i class='bx bxl-github' ></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <script src="./javascript/script.js"></script>
+</body>
+
+</html>

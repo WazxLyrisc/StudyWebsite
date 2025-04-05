@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch</title>
+    <link href="https://fonts.googleapis.com/icon?family-Material+Icons">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="./styles/calendar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <i class="bx bxl-c-plus-plus"></i>
+                <div class="logo_name">Website</div>
+            </div>
+            <i class="bx bx-menu" id="btn"></i>
+        </div>
+        <ul class="nav_list">
+            <li>
+                    <i class="bx bx-search"></i>
+                    <input type="text" placeholder="search">
+                <span class="tooltip">Tìm Kiếm</span>
+            </li>
+            <li>
+                <a href="./index.html">
+                    <i class='bx bx-clipboard'></i>
+                    <span class="links_name">Bảng kế hoạch</span>
+                </a>
+                <span class="tooltip">Bảng kế hoạch</span>
+            </li>
+            <!-- <li>
+                <a href="#">
+                    <i class="bx bx-user"></i>
+                    <span class="links_name">Người dùng</span>
+                </a>
+                <span class="tooltip">Người dùng</span>
+            </li> -->
+            <li>
+                <a href="./vertical.html">
+                    <i class='bx bxs-objects-vertical-bottom'></i>
+                    <span class="links_name">Thống kê giờ học</span>
+                </a>
+                <span class="tooltip">Thống kê giờ học</span>
+            </li>
+            <li>
+                <a href="./calendar.html">
+                    <i class='bx bxs-calendar'></i>
+                    <span href="" class="links_name">Lịch</span>
+                </a>
+                <span class="tooltip">Lịch</span>
+            </li>
+            <!-- <li>
+                <a href="#">
+                    <i class='bx bxs-time'></i>
+                    <span class="links_name">Thời hạn</span>
+                </a>
+                <span class="tooltip">Thời hạn</span>
+            </li> -->
+            <!-- <li>
+                <a href="#">
+                    <i class="bx bx-cart-alt"></i>
+                    <span class="links_name">Shop</span>
+                </a>
+                <span class="tooltip">Shop</span>
+            </li> -->
+            <li>
+                <a href="#">
+                    <i class="bx bx-cog"></i>
+                    <span class="links_name">Cài đặt</span>
+                </a>
+                <span class="tooltip">Cài đặt</span>
+            </li>
+        </ul>
+        <div class="profile_content">
+            <div class="profile">
+                <div class="profile_details">
+                    <img src="War.jpg" alt="">
+                     <div class="name_job">
+                        <div class="name">HGS</div>
+                        <div class="job">Học sinh</div>
+                     </div>
+                </div>
+                <a href="./register.html"><i class="bx bx-log-out" id="log_out"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="home_content">
+        <div class="list-calendar">
+            <div class="wrapper">
+                <header>
+                    <p class="current-date"></p>
+                    <div class="icons">
+                        <span id="prev" class="material-symbols-rounded"><i class='bx bx-chevron-left'></i></span>
+                        <span id="next" class="material-symbols-rounded"><i class='bx bx-chevron-right'></i></span>
+                    </div>
+                </header>
+                <div class="calendar">
+                    <ul class="weeks">
+                        <li>Sun</li>
+                        <li>Mon</li>
+                        <li>Tue</li>
+                        <li>Wed</li>
+                        <li>Thu</li>
+                        <li>Fri</li>
+                        <li>Sat</li>
+                    </ul>
+                    <ul class="days"></ul>
+                </div>
+            </div>
+        </div>    
+    </div>
+    <script src="./javascript/calendar.js" defer></script>
+</body>
+</html>

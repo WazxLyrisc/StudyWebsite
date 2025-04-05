@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.I test 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h2>🎯 Thêm nhiệm vụ học tập</h2>
+    <input type="text" id="taskInput" placeholder="Nhập tên nhiệm vụ">
+    <select id="difficulty">
+        <option value="easy">Dễ (Có thể hoàn thành)</option>
+        <option value="medium">Trung bình (Cân nhắc)</option>
+        <option value="hard">Khó (Khó hoàn thành)</option>
+    </select>
+    <button onclick="addTask()">Thêm</button>
+
+    <h3>📂 Phân loại nhiệm vụ</h3>
+    <div style="display: flex; gap: 20px;">
+        <div>
+            <h4>✅ Có thể hoàn thành</h4>
+            <ul id="easyTasks"></ul>
+        </div>
+        <div>
+            <h4>⚖️ Cân nhắc</h4>
+            <ul id="mediumTasks"></ul>
+        </div>
+        <div>
+            <h4>❌ Khó hoàn thành</h4>
+            <ul id="hardTasks"></ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

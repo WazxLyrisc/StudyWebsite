@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Thống kê giờ học - Anime Style</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff0f6;
+      padding: 30px;
+      text-align: center;
+    }
+    h2 {
+      color: #e91e63;
+      font-size: 24px;
+    }
+    canvas {
+      margin-top: 20px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .anime-text {
+      margin-top: 20px;
+      font-style: italic;
+      color: #c2185b;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📊 Thống kê giờ học trong tuần</h2>
+  <canvas id="studyChart" width="600" height="300"></canvas>
+  <div class="anime-text">🌸 “Senpai học giỏi quá đi! Em cổ vũ hết mình cho senpai nè~” 🌸</div>
+
+  <script>
+    // Dữ liệu học tập mẫu
+    const studyLogs = [
+      { date: '2025-03-21', subject: 'Toán', hours: 2 },
+      { date: '2025-03-21', subject: 'Lý', hours: 1 },
+      { date: '2025-03-22', subject: 'Hoá', hours: 3 },
+      { date: '2025-03-22', subject: 'Sử', hours: 1 },
+      { date: '2025-03-23', subject: 'Văn', hours: 2 },
+    ];
+
+    // Xử lý dữ liệu để tính tổng giờ học theo từng ngày
+    const stats = {};
+
+    studyLogs.forEach(log => {
+      const date = new Date(log.date);
+      const weekday = date.toLocaleDateString('vi-VN', { weekday: 'long' });
+      if (!stats[weekday]) stats[weekday] = 0;
+      stats[weekday] += log.hours;
+    });
+
+    const labels = Object.keys(stats);
+    const data = Object.values(stats);
+
+    // Vẽ biểu đồ bằng Chart.js
+    const ctx = document.getElementById('studyChart').getContext('2d');
+    const studyChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Giờ học',
+          data: data,
+          backgroundColor: '#ff80ab',
+          borderRadius: 10
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: { display: true, text: 'Giờ học' }
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

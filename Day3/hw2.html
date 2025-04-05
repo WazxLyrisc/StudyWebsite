@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="hw2.css">
+</head>
+<body>
+  <!-- Trang chủ -->
+  <div id="home">
+    <h1>Welcome to the Quiz App</h1>
+    <button id="startQuiz">Bắt đầu Quiz</button>
+    <button id="viewRanking">Xem bảng xếp hạng</button>
+  </div>
+
+  <!-- Trang Quiz -->
+  <div id="quiz" style="display: none;">
+    <h2 id="question">Câu hỏi sẽ hiển thị ở đây</h2>
+    <div id="answers">
+      <button class="answer">Đáp án 1</button>
+      <button class="answer">Đáp án 2</button>
+      <button class="answer">Đáp án 3</button>
+      <button class="answer">Đáp án 4</button>
+    </div>
+    <p>Điểm của bạn: <span id="score">0</span></p>
+    <button id="saveScore">Lưu điểm</button>
+  </div>
+
+  <!-- Hộp thoại nhập tên -->
+  <div id="saveDialog" style="display: none;">
+    <h2>Nhập tên của bạn</h2>
+    <input type="text" id="playerName" placeholder="Tên của bạn">
+    <button id="submitScore">Gửi</button>
+  </div>    
+
+  <script src="hw2.js"></script>
+</body>
+</html>
