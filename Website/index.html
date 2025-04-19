@@ -109,49 +109,72 @@
                         <button onclick="addTask()">Add</button>
                     </form> -->
                     <button onclick="document.getElementById('id01').style.display='block'">Tạo kế hoạch</button>
+
+                    <div id="todo-container" ></div>
+
                     <div id="id01" class="modal">
-                        <form class="modal-content" action="#">
+                     
+                        <form class="modal-content"  id="taskForm" >
                             <div class="container-1">
                                 <h2>Thêm nhiệm vụ học tập</h2>
                                 <h3>Tilte</h3>
-                                <input type="text" id="taskInput" placeholder="Nhập tên nhiệm vụ">
-                                <!-- <select id="difficulty">
-                                    <option value="easy">Dễ (có thể hoàn thành)</option>
-                                    <option value="medium"> Trung bình (cân nhắc)</option>
-                                    <option value="hard"> Khó (Khó hoàn thành)</option>
-                                </select> -->
+                                <label for="taskName"></label>
+                                <input type="text" id="taskName" placeholder="Nhập tên nhiệm vụ" required>
+
                                 <h3>Content</h3>
 
-                                <textarea type="text" id="taskInput-2" row="6" cols="50" style="height:100px; width:50%; font-size:20px; text-align:center;" placeholder="Nhập nội dung"></textarea>
+                                <textarea type="text" id="taskInput-2" row="6" cols="50"
+                                    style="height:100px; width:50%; font-size:20px; text-align:center;"
+                                    placeholder="Nhập nội dung"></textarea>
 
-                                <h3>Important</h3>
-                                <select id="important">
-                                    <option value="">1</option>
-                                    <option value="">2</option>
-                                    <option value="">3</option>
-                                    <option value="">4</option>
+                                <h3 for="importance">Important</h3>
+                                <select id="importance">
+                                    <option value="important">Quan trọng</option>
+                                    <option value="non-important">Không quan trọng</option>
+                                    <!-- <option value="">3</option>
+                                    <option value="">4</option> -->
                                 </select>
-                                <h3>Urgent</h3>
-                                <select id="urgent">
-                                    <option value="">1</option>
-                                    <option value="">2</option>
-                                    <option value="">3</option>
-                                    <option value="">4</option>
+
+                                <h3 for="urgency">Urgent</h3>
+                                <select id="urgency">
+                                    <option value="urgent">Khẩn cấp</option>
+                                    <option value="non-urgent">Không khẩn cấp</option>
+                                    <!-- <option value="">3</option>
+                                    <option value="">4</option> -->
                                 </select>
-                                <button onclick="addTask()" type="submit" class="signupbtn">Thêm</button>
+                                <button onclick="addTask()" class="signupbtn">Thêm</button>
                             </div>
-                            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-                                title="Close Modal"><i class='bx bx-x-circle'></i></span>
+                            <!-- <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                                title="Close Modal"><i class='bx bx-x-circle'></i></span> -->
                             <div class="container-2">
                                 <div class="clearfix">
                                     <button type="button" onclick="document.getElementById('id01').style.display='none'"
                                         class="cancelbtn">Từ chối</button>
-                                    <!-- <button type="submit" class="signupbtn">Tạo kế hoạch</button> -->
                                 </div>
                             </div>
                         </form>
+
+                        <!-- <form id="taskForm">
+                            <input type="text" id="taskName" required placeholder="Tên nhiệm vụ">
+
+                            <label>Quan trọng:</label>
+                            <select id="importance">
+                                <option value="important">Quan trọng</option>
+                                <option value="not-important">Không quan trọng</option>
+                            </select>
+
+                            <label>Khẩn cấp:</label>
+                            <select id="urgency">
+                                <option value="urgent">Khẩn cấp</option>
+                                <option value="not-urgent">Không khẩn cấp</option>
+                            </select>
+
+                            <button type="submit">Thêm nhiệm vụ</button>
+                        </form> -->
                     </div>
                 </div>
+
+                <!-- <div id="todo-container"></div> -->
 
                 <!-- <ul id="list-container">
                     Có thể bỏ code ở dưới
@@ -183,11 +206,46 @@
                     <ul id="hardTasks"></ul>
                 </div>
             </div> -->
+
+
+            <div class="matrix" id="matrix">
+                <div class="quadrant" id="do-now">
+                    <h3>Làm ngay</h3>
+                </div>
+                <div class="quadrant" id="schedule">
+                    <h3>Lên kế hoạch</h3>
+                </div>
+                <div class="quadrant" id="delegate">
+                    <h3>Ủy thác/ tạm xử lý</h3>
+                </div>
+                <div class="quadrant" id="eliminate">
+                    <h3>Bỏ qua</h3>
+                </div>
+            </div>
+
+            
         </div>
 
+
+        <!-- <div class="matrix" >
+            <div class="quadrant" id="do-now">
+                <h3>Làm ngay</h3>
+            </div>
+            <div class="quadrant" id="schedule">
+                <h3>Lên kế hoạch</h3>
+            </div>
+            <div class="quadrant" id="delegate">
+                <h3>Ủy thác/ tạm xử lý</h3>
+            </div>
+            <div class="quadrant" id="eliminate">
+                <h3>Bỏ qua</h3>
+            </div>
+        </div> -->
+
+        
         <!--Tạo Firebass cho to do để lưu trữ kế hoạch-->
 
-        <!-- <div class="footer">
+        <div class="footer">
             <div class="container">
                 <div class="row-footer">
                     <div class="footer-col">
@@ -229,23 +287,64 @@
                     </div>
                 </div>
             </div>
-        </div> -->
-        <div class="chatbot">
-            <header>
-                <h2>ChatBot</h2>
-            </header>
-            <ul class="chatbox">
-                <li class="chat incoming">
-                    <span class="material-symbols-outlined">smart_toy</span>
-                    <p>Chào !<br>Mình có thể giúp gì cho bạn?</p>
-                </li>
-                <li class="chat outgoing">
-                    <p>Tạm Biệt</p>
-                </li>
-            </ul>
         </div>
 
+
+        <!-- <div class="show-chatbot">
+            <button class="chatbot-toggler">
+                <span class="material-symbols-outlined">model_comment</span>
+                <span class="material-symbols-outlined">close</span>
+            </button>
+
+            <div class="chatbot">
+                <header>
+                    <h2>ChatBot</h2>
+                    <span class="material-symbols-outlined">close</span>
+                </header>
+                <ul class="chatbox">
+                    <li class="chat incoming">
+                        <span class="material-symbols-outlined">smart_toy</span>
+                        <p>Chào !<br>Mình có thể giúp gì cho bạn?</p>
+                    </li>
+                    <li class="chat outgoing">
+                        <p>Tạm Biệt</p>
+                    </li>
+                </ul>
+                <div class="chat-input">
+                    <textarea placeholder="Enter a message..." required></textarea>
+                    <span id="send-btn">Send</span>
+                </div>
+            </div>
+        </div> -->
+
+        
     </div>
+
+    <!-- <button class="chatbot-toggler">
+        <span class="material-symbols-outlined">model_comment</span>
+        <span class="material-symbols-outlined">close</span>
+    </button>
+
+    <div class="chatbot">
+        <header>
+            <h2>ChatBot</h2>
+            <span class="close-btn material-symbols-outlined">close</span>
+        </header>
+        <ul class="chatbox">
+            <li class="chat incoming">
+                <span class="material-symbols-outlined">smart_toy</span>
+                <p>Chào !<br>Mình có thể giúp gì cho bạn?</p>
+            </li>
+            <li class="chat outgoing">
+                <p>Tạm Biệt</p>
+            </li>
+        </ul>
+        <div class="chat-input">
+            <textarea placeholder="Enter a message..." required></textarea>
+            <span id="send-btn">Send</span>
+        </div>
+    </div> -->
+
 
     <!-- <div class="footer">
         <div class="container">
@@ -291,7 +390,18 @@
         </div>
     </div> -->
 
-    <script src="./javascript/script.js"></script>
+    <div id="products-container"></div>
+
+    <script src="./javascript/script.js" defer></script>
+
+    <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore-compat.js"></script>
+
+
+    <script src="./javascript/firebase-config.js"></script>
+    
+
 </body>
 
 </html>

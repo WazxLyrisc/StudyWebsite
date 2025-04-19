@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ma trận Eisenhower - Quản lý học tập</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f7f7f7;
+    }
+    h1 {
+      text-align: center;
+    }
+    form {
+      margin-bottom: 20px;
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    label, select, input {
+      display: block;
+      margin: 10px 0;
+      width: 100%;
+    }
+    button {
+      padding: 10px;
+      background: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .matrix {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+    .quadrant {
+      background: #fff;
+      border-radius: 10px;
+      padding: 15px;
+      min-height: 150px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .quadrant h3 {
+      margin-top: 0;
+    }
+    .task {
+      background: #e0f7fa;
+      margin: 5px 0;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>📘 Ma trận Eisenhower cho Nhiệm vụ học tập</h1>
+
+  <form id="taskForm">
+    <label for="taskName">Tên nhiệm vụ:</label>
+    <input type="text" id="taskName" required />
+
+    <label for="importance">Mức độ quan trọng:</label>
+    <select id="importance">
+      <option value="important">Quan trọng</option>
+      <option value="not-important">Không quan trọng</option>
+    </select>
+
+    <label for="urgency">Mức độ khẩn cấp:</label>
+    <select id="urgency">
+      <option value="urgent">Khẩn cấp</option>
+      <option value="not-urgent">Không khẩn cấp</option>
+    </select>
+
+    <button type="submit">➕ Thêm nhiệm vụ</button>
+  </form>
+
+  <div class="matrix">
+    <div class="quadrant" id="do-now">
+      <h3>🟥 Làm ngay</h3>
+    </div>
+    <div class="quadrant" id="schedule">
+      <h3>🟩 Lên kế hoạch</h3>
+    </div>
+    <div class="quadrant" id="delegate">
+      <h3>🟨 Uỷ thác/Tạm xử lý</h3>
+    </div>
+    <div class="quadrant" id="eliminate">
+      <h3>⬜ Bỏ qua</h3>
+    </div>
+  </div>
+
+  <script>
+    const taskForm = document.getElementById("taskForm");
+
+    taskForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("taskName").value;
+      const importance = document.getElementById("importance").value;
+      const urgency = document.getElementById("urgency").value;
+
+      let category = "";
+      if (importance === "important" && urgency === "urgent") {
+        category = "do-now";
+      } else if (importance === "important" && urgency === "not-urgent") {
+        category = "schedule";
+      } else if (importance === "not-important" && urgency === "urgent") {
+        category = "delegate";
+      } else {
+        category = "eliminate";
+      }
+
+      const taskElement = document.createElement("div");
+      taskElement.className = "task";
+      taskElement.textContent = name;
+
+      document.getElementById(category).appendChild(taskElement);
+
+      taskForm.reset();
+    });
+  </script>
+</body>
+</html>
