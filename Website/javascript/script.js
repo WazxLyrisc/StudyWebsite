@@ -1,83 +1,40 @@
 let btn = document.querySelector("#btn");
 let sidebar = document.querySelector(".sidebar");
-// let searchBtn = document.querySelector(".bx-search");
 
 btn.onclick = function () {
     sidebar.classList.toggle("active");
 }
 
 
-// var modal = document.getElementById('id01');
-// window.onclick = function (event) {
-//     if (event.target == modal) {
-//         modal.style.display = "none";
-//     }
-// }
 
-const taskForm = document.querySelector('#taskForm');
-const title = document.querySelector('#taskName').value;
-const content = document.querySelector('#taskInput-2').value;
-const importance = document.querySelector('#importance').value;
-const urgency = document.querySelector('#urgency').value;
 function addTask() {
-    // Add a new document with a generated id.
+    
+    const taskForm = document.querySelector('#taskForm');
+    const title = document.querySelector('#title').value;
+    const content = document.querySelector('#content').value;
+    const importance = document.querySelector('#importance').value;
+    const urgency = document.querySelector('#urgency').value;
+
+    if (!title || !content) {
+        alert("Vui lòng nhập đầy đủ thông tin.");
+        return;
+    }
+
     db.collection("to-do").add({
         title: title,
         content: content,
         importance: importance,
-        urgency: urgency
+        urgency: urgency,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
     })
         .then(() => {
             console.log("Add task successfully");
+            taskForm.reset();
         })
         .catch((error) => {
             console.error("Error adding document: ", error);
         });
-    // const taskText = document.getElementById("taskInput").value;
-    // const matrix = document.getElementById("matrix").value;
 
-    // if (!taskText){
-    //     alert("Vui lòng nhập thông tin nhiệm vụ cần làm");
-    //     return;
-    // }
-
-    // const li = document.createElement("li");
-    // li.textContent = taskText + " ";
-
-    // const delBtn = document.createElement("button-2");
-    // delBtn.textContent = " Xóa ";
-    // delBtn.onclick = () => li.remove();
-    // li.appendChild(delBtn);
-
-    taskForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const name = document.getElementById("taskName").value;
-        const importance = document.getElementById("importance").value;
-        const urgency = document.getElementById("urgency").value;
-
-        let category = "";
-        if (importance === "important" && urgency === "urgent") {
-            category = "do-now";
-        }
-        else if (importance === "important" && urgency === "not-urgent") {
-            category = "schedule";
-        }
-        else if (importance === "not-important" && urgency === "urgent") {
-            category = "delegate";
-        }
-        else {
-            category = "eliminate";
-        }
-
-        const taskElement = document.createElement("div");
-        taskElement.className = "task";
-        taskElement.textContent = name;
-
-        document.getElementById(category).appendChild(taskElement);
-
-        taskForm.reset();
-    });
 }
 
 // Firebase
@@ -85,23 +42,141 @@ function loadProducts() {
     const productsContainer = document.querySelector("#todo-container");
     productsContainer.innerHTML = '';
 
-    db.collection("to-do").get()
+    db.collection("to-do").orderBy("createdAt", "desc").get()
         .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 const todo = doc.data();
+                const isImportant = todo.importance;
+                const isUrgent = todo.urgency;
+
+                let color = "#f1c40f";
+
+                if (isImportant == "true" && isUrgent == "true") {
+                    color = "#e74c3c";
+                } else if (isImportant == "true" && isUrgent == "false") {
+                    color = "#1874CD";
+                } else if (isImportant == "false" && isUrgent == "true") {
+                    color =  "#00CC00";
+                }
+
                 const todoElement = document.createElement("div")
+                todoElement.style.borderLeft = `15px solid ${color}`;
                 todoElement.innerHTML = `
-            Nhiệm vụ:<p>${todo.title}</p>
-            Nội dung:<p>${todo.content}</p>`
+            <p><strong>Nhiệm vụ:</strong> ${todo.title}</p>
+            <p><strong>Nội dung:</strong> ${todo.content}</p>`
 
                 productsContainer.appendChild(todoElement);
             });
-
         })
         .catch((error) => {
             console.log("Error getting documents: ", error);
         });
 }
 
-window.onload = loadProducts;
+function loadRedTask() {
+    const redTaskContainer = document.querySelector('#red');
+    redTaskContainer.innerHTML = '';
 
+    db.collection('to-do').where('importance', '==', 'true').where('urgency', '==', 'true').get()
+        .then((querySnapshot) => {
+
+            querySnapshot.forEach((doc) => {
+                const task = doc.data();
+                const taskElement = document.createElement('div');
+                taskElement.classList.add('task');
+                taskElement.innerHTML = `
+                    <p>${task.content}</p>
+                `;
+                redTaskContainer.appendChild(taskElement);
+            });
+        })
+        .then(() => {
+            console.log("Đã thành công lấy task")
+        })
+        .catch((error) => {
+            console.error('Lỗi khi task: ', error);
+        });
+}
+
+function loadBlueTask() {
+    const blueTaskContainer = document.querySelector('#blue');
+    blueTaskContainer.innerHTML = '';
+
+    db.collection('to-do').where('importance', '==', 'true').where('urgency', '==', 'false').get()
+        .then((querySnapshot) => {
+
+            querySnapshot.forEach((doc) => {
+                const task = doc.data();
+                const taskElement = document.createElement('div');
+                taskElement.classList.add('task');
+                taskElement.innerHTML = `
+                    <p> ${task.content}</p>
+                `;
+                blueTaskContainer.appendChild(taskElement);
+            });
+        })
+        .then(() => {
+            console.log("Đã thành công lấy task")
+        })
+        .catch((error) => {
+            console.error('Lỗi khi task: ', error);
+        });
+}
+
+function loadGreenTask() {
+    const greenTaskContainer = document.querySelector('#green');
+    greenTaskContainer.innerHTML = '';
+
+    db.collection('to-do').where('importance', '==', 'false').where('urgency', '==', 'true').get()
+        .then((querySnapshot) => {
+
+            querySnapshot.forEach((doc) => {
+                const task = doc.data();
+                const taskElement = document.createElement('div');
+                taskElement.classList.add('task');
+                taskElement.innerHTML = `
+                    <p>${task.content}</p>
+                `;
+                greenTaskContainer.appendChild(taskElement);
+            });
+        })
+        .then(() => {
+            console.log("Đã thành công lấy task")
+        })
+        .catch((error) => {
+            console.error('Lỗi khi task: ', error);
+        });
+}
+
+function loadYellowTask() {
+    let yellowTaskContainer = document.querySelector('#yellow');
+    yellowTaskContainer.innerHTML = '';
+
+    db.collection('to-do').where('importance', '==', 'false').where('urgency', '==', 'false').get()
+        .then((querySnapshot) => {
+
+            querySnapshot.forEach((doc) => {
+                const task = doc.data();
+                const taskElement = document.createElement('div');
+                taskElement.classList.add('task');
+                taskElement.innerHTML = `
+                    <p>${task.content}</p>
+                `;
+                yellowTaskContainer.appendChild(taskElement);
+            });
+        })
+        .then(() => {
+            console.log("Đã thành công lấy task")
+        })
+        .catch((error) => {
+            console.error('Lỗi khi task: ', error);
+        });
+}
+
+window.onload = function () {
+    loadProducts();
+    loadRedTask();
+    loadBlueTask();
+    loadGreenTask();
+    loadYellowTask();
+};

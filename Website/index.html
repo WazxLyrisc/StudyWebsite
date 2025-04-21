@@ -57,20 +57,6 @@
                 </a>
                 <span class="tooltip">Lịch</span>
             </li>
-            <!-- <li>
-                <a href="#">
-                    <i class='bx bxs-time'></i>
-                    <span class="links_name">Thời hạn</span>
-                </a>
-                <span class="tooltip">Thời hạn</span>
-            </li> -->
-            <!-- <li>
-                <a href="#">
-                    <i class="bx bx-cart-alt"></i>
-                    <span class="links_name">Shop</span>
-                </a>
-                <span class="tooltip">Shop</span>
-            </li> -->
             <li>
                 <a href="#">
                     <i class="bx bx-cog"></i>
@@ -104,145 +90,63 @@
 
                 <div class="row">
                     <h4>To-do</h4>
-                    <!-- <form>
-                        <input type="text" id="input-box" placeholder="Tilte...">
-                        <button onclick="addTask()">Add</button>
-                    </form> -->
+
                     <button onclick="document.getElementById('id01').style.display='block'">Tạo kế hoạch</button>
 
-                    <div id="todo-container" ></div>
+                    <div id="todo-container"></div>
 
                     <div id="id01" class="modal">
-                     
-                        <form class="modal-content"  id="taskForm" >
-                            <div class="container-1">
-                                <h2>Thêm nhiệm vụ học tập</h2>
-                                <h3>Tilte</h3>
-                                <label for="taskName"></label>
-                                <input type="text" id="taskName" placeholder="Nhập tên nhiệm vụ" required>
+                        <form class="modal-content" id="taskForm">
+                            <h2>Thêm nhiệm vụ học tập</h2>
+                            <label for="taskName">Tilte</label>
+                            <input type="text" id="title" placeholder="Nhập tên nhiệm vụ" required>
+                            <br>
+                            <label for="content">Content</label>
+                            <textarea type="text" id="content" row="6" cols="50"
+                                style="height:100px; width:50%; font-size:20px; text-align:center;"
+                                placeholder="Nhập nội dung"></textarea>
 
-                                <h3>Content</h3>
-
-                                <textarea type="text" id="taskInput-2" row="6" cols="50"
-                                    style="height:100px; width:50%; font-size:20px; text-align:center;"
-                                    placeholder="Nhập nội dung"></textarea>
-
-                                <h3 for="importance">Important</h3>
-                                <select id="importance">
-                                    <option value="important">Quan trọng</option>
-                                    <option value="non-important">Không quan trọng</option>
-                                    <!-- <option value="">3</option>
-                                    <option value="">4</option> -->
-                                </select>
-
-                                <h3 for="urgency">Urgent</h3>
-                                <select id="urgency">
-                                    <option value="urgent">Khẩn cấp</option>
-                                    <option value="non-urgent">Không khẩn cấp</option>
-                                    <!-- <option value="">3</option>
-                                    <option value="">4</option> -->
-                                </select>
-                                <button onclick="addTask()" class="signupbtn">Thêm</button>
-                            </div>
-                            <!-- <span onclick="document.getElementById('id01').style.display='none'" class="close"
-                                title="Close Modal"><i class='bx bx-x-circle'></i></span> -->
-                            <div class="container-2">
-                                <div class="clearfix">
-                                    <button type="button" onclick="document.getElementById('id01').style.display='none'"
-                                        class="cancelbtn">Từ chối</button>
-                                </div>
-                            </div>
-                        </form>
-
-                        <!-- <form id="taskForm">
-                            <input type="text" id="taskName" required placeholder="Tên nhiệm vụ">
-
-                            <label>Quan trọng:</label>
+                            <label for="importance">Important</label>
                             <select id="importance">
-                                <option value="important">Quan trọng</option>
-                                <option value="not-important">Không quan trọng</option>
+                                <option value="true">Quan trọng</option>
+                                <option value="false">Không quan trọng</option>
                             </select>
 
-                            <label>Khẩn cấp:</label>
+                            <label for="urgency">Urgent</label>
                             <select id="urgency">
-                                <option value="urgent">Khẩn cấp</option>
-                                <option value="not-urgent">Không khẩn cấp</option>
+                                <option value="true">Khẩn cấp</option>
+                                <option value="false">Không khẩn cấp</option>
                             </select>
+                            <button type="button" onclick="addTask()" class="signupbtn">Thêm</button>
+                            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Từ chối</button>
 
-                            <button type="submit">Thêm nhiệm vụ</button>
-                        </form> -->
+                        </form>
                     </div>
                 </div>
 
-                <!-- <div id="todo-container"></div> -->
-
-                <!-- <ul id="list-container">
-                    Có thể bỏ code ở dưới
-                    <li class="checked">kế hoạch 1</li>
-                    <li>kế hoạch 2</li>
-                    <li>kế hoạch 3</li>
-
-                </ul> -->
-
             </div>
-
-            <!-- <div class="to-do-list">
-                <div class="row">
-                    <h4>Có thể hoàn thành</h4>
-                    <ul id="easyTasks"></ul>
-                </div>
-            </div>
-
-            <div class="to-do-list">
-                <div class="row">
-                    <h4>Trung bình</h4>
-                    <ul id="mediumTasks"></ul>
-                </div>
-            </div>
-
-            <div class="to-do-list">
-                <div class="row">
-                    <h4>Khó hoàn thành</h4>
-                    <ul id="hardTasks"></ul>
-                </div>
-            </div> -->
 
 
             <div class="matrix" id="matrix">
-                <div class="quadrant" id="do-now">
+                <div class="quadrant red" id="do-now">
                     <h3>Làm ngay</h3>
+                    <div class="taskList" id="red"></div>
                 </div>
-                <div class="quadrant" id="schedule">
+                <div class="quadrant blue" id="schedule">
                     <h3>Lên kế hoạch</h3>
+                    <div class="taskList" id="blue"></div>
                 </div>
-                <div class="quadrant" id="delegate">
+                <div class="quadrant green" id="delegate">
                     <h3>Ủy thác/ tạm xử lý</h3>
+                    <div class="taskList" id="green"></div>
                 </div>
-                <div class="quadrant" id="eliminate">
+                <div class="quadrant yellow" id="eliminate">
                     <h3>Bỏ qua</h3>
+                    <div class="taskList" id="yellow"></div>
                 </div>
             </div>
-
-            
         </div>
 
-
-        <!-- <div class="matrix" >
-            <div class="quadrant" id="do-now">
-                <h3>Làm ngay</h3>
-            </div>
-            <div class="quadrant" id="schedule">
-                <h3>Lên kế hoạch</h3>
-            </div>
-            <div class="quadrant" id="delegate">
-                <h3>Ủy thác/ tạm xử lý</h3>
-            </div>
-            <div class="quadrant" id="eliminate">
-                <h3>Bỏ qua</h3>
-            </div>
-        </div> -->
-
-        
         <!--Tạo Firebass cho to do để lưu trữ kế hoạch-->
 
         <div class="footer">
@@ -281,8 +185,8 @@
                         <div class="social-links">
                             <a href="#"><i class='bx bxl-facebook-circle'></i></a>
                             <a href="#"><i class='bx bxl-google'></i></a>
-                            <a href="#"><i class='bx bxl-youtube' ></i></a>
-                            <a href="#"><i class='bx bxl-github' ></i></a>
+                            <a href="#"><i class='bx bxl-youtube'></i></a>
+                            <a href="#"><i class='bx bxl-github'></i></a>
                         </div>
                     </div>
                 </div>
@@ -317,7 +221,7 @@
             </div>
         </div> -->
 
-        
+
     </div>
 
     <!-- <button class="chatbot-toggler">
@@ -345,51 +249,6 @@
         </div>
     </div> -->
 
-
-    <!-- <div class="footer">
-        <div class="container">
-            <div class="row-footer">
-                <div class="footer-col">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="#">Hello</a></li>
-                        <li><a href="#">Hello</a></li>
-                        <li><a href="#">Hello</a></li>
-                        <li><a href="#">Hello</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Let Help</h4>
-                    <ul>
-                        <li><a href="#">Su</a></li>
-                        <li><a href="#">Su</a></li>
-                        <li><a href="#">Su</a></li>
-                        <li><a href="#">Su</a></li>
-                        <li><a href="#">Su</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Info</h4>
-                    <ul>
-                        <li><a href="#">Uiia</a></li>
-                        <li><a href="#">Uiia</a></li>
-                        <li><a href="#">Uiia</a></li>
-                        <li><a href="#">Uiia</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Follow Us</h4>
-                    <div class="social-links">
-                        <a href="#"><i class='bx bxl-facebook-circle'></i></a>
-                        <a href="#"><i class='bx bxl-google'></i></a>
-                        <a href="#"><i class='bx bxl-youtube' ></i></a>
-                        <a href="#"><i class='bx bxl-github' ></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
     <div id="products-container"></div>
 
     <script src="./javascript/script.js" defer></script>
@@ -400,7 +259,7 @@
 
 
     <script src="./javascript/firebase-config.js"></script>
-    
+
 
 </body>
 

@@ -50,7 +50,7 @@ function handleRegister(event) {
                 password
             }
             alert("Đăng Ký thành công");
-            window.location.href = "register.html"
+            window.location.href = "./index.html";
         })
         .catch((error) => {
             var errorCode = error.code;
@@ -84,7 +84,7 @@ function handleLogin(event) {
             // Signed in
             var user = userCredential.user;
             alert("Đăng nhập thành công");
-            window.location.href = "index.html"
+            window.location.href = "./index.html";
         })
         .catch((error) => {
             var errorCode = error.code;
